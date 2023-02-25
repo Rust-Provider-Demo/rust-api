@@ -7,15 +7,19 @@ jobs:
   test:
     name: cargo test
     runs-on: ubuntu-latest
+    env:
+      - env: ci
     steps:
       - uses: actions/checkout@v3
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - run: cargo test --all
- 
+
   # Check formatting with rustfmt
   formatting:
     name: cargo fmt
     runs-on: ubuntu-latest
+    env:
+      - env: ci
     steps:
       - uses: actions/checkout@v3
       # Ensure rustfmt is installed and setup problem matcher
