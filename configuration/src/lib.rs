@@ -2,12 +2,12 @@ use std::{collections::HashMap, env};
 
 use dotenvy;
 
-trait GetEnvVar {
+pub trait GetEnvVar {
     fn get_var(&self, key: &str) -> Option<&String>;
 }
 
 pub struct Config {
-    pub vars: HashMap<String, String>,
+    vars: HashMap<String, String>,
 }
 
 impl Config {

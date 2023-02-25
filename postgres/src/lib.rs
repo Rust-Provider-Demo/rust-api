@@ -16,9 +16,7 @@ pub mod schema;
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
 
-use dotenvy::dotenv;
-use std::env;
-
+use configuration::{Config, GetEnvVar};
 use get_providers::{GetProvider, GetProviders};
 use models::Provider;
 
@@ -29,11 +27,8 @@ pub struct ProviderOperations {
 
 impl ProviderOperations {
     pub fn new(get_providers: GetProviders) -> Self {
-        dotenv().ok();
-
-        let username = env::var("db_username").expect("db_username is a required env var");
-        let password = env::var("db_password").expect("db_password is a required env var");
-        let connection = env::var("db_connection").expect("db_connection is a required env var");
+        let config = Config::new();
+        let (username, password, connection) = ProviderOperations::get_connection(&config);
 
         let postgres_connection_string = format!("postgres://{username}:{password}@{connection}");
 
@@ -54,6 +49,20 @@ impl ProviderOperations {
                 None
             }
         }
+    }
+
+    fn get_connection(config: &Config) -> (&String, &String, &String) {
+        (
+            config
+                .get_var("db_username")
+                .expect("db_username is a requried env var"),
+            config
+                .get_var("db_password")
+                .expect("db_password is a requried env var"),
+            config
+                .get_var("db_connection")
+                .expect("db_connection is a requried env var"),
+        )
     }
 }
 

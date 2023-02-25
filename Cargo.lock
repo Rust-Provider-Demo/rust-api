@@ -15,6 +15,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 
 [[package]]
+name = "configuration"
+version = "0.1.0"
+dependencies = [
+ "dotenvy",
+]
+
+[[package]]
 name = "diesel"
 version = "2.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -55,8 +62,8 @@ checksum = "fad582f4b9e86b6caa621cabeb0963332d92eea04729ab12892c2533951e6440"
 name = "postgres"
 version = "0.1.0"
 dependencies = [
+ "configuration",
  "diesel",
- "dotenvy",
 ]
 
 [[package]]
