@@ -40,7 +40,7 @@ mod config_test {
         assert_eq!(env::var("env").unwrap(), "ci");
         let config = Config::new();
 
-        assert_eq!(config.get_var("env").unwrap(), &String::from("env"));
+        assert_eq!(config.get_var("env").unwrap(), &String::from("ci"));
         assert_eq!(
             config.get_var("db_username").unwrap(),
             &String::from("ci-username")
