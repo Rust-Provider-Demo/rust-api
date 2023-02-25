@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "configuration",
+]
+
+[workspace.dependencies]
+dotenvy = "0.15.6"
