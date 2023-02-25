@@ -1,6 +1,7 @@
 [workspace]
 members = [
-    "postgres"
+    "postgres",
+    "configuration",
 ]
 
 [workspace.dependencies]
