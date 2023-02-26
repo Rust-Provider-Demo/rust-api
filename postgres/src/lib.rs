@@ -55,13 +55,13 @@ impl ProviderOperations {
         (
             config
                 .get_var("db_username")
-                .expect("db_username is a requried env var"),
+                .expect("db_username is a required env var"),
             config
                 .get_var("db_password")
-                .expect("db_password is a requried env var"),
+                .expect("db_password is a required env var"),
             config
                 .get_var("db_connection")
-                .expect("db_connection is a requried env var"),
+                .expect("db_connection is a required env var"),
         )
     }
 }
